@@ -23,3 +23,22 @@ function rotateGears() {
 }
 
 rotateGears();
+
+// Массив символов Майя для вывода
+const mayanSymbols = ["\u2680", "\u2681", "\u2682", "\u2683", "\u2684", "\u2685"];
+
+// Функция для вычисления символа Майя на основе выбранной даты
+function getMayanSymbol(date) {
+  const daysInTzolkinCycle = 260;
+  const symbolIndex = (date.getDay() + date.getMonth() * 20) % daysInTzolkinCycle;
+  return mayanSymbols[symbolIndex % mayanSymbols.length];
+}
+
+// Получаем элемент, куда будем выводить символ Майя
+const mayanSymbolElement = document.getElementById("mayan-symbol");
+
+// Получаем текущую дату
+const currentDate = new Date();
+
+// Выводим символ Майя для текущей даты
+mayanSymbolElement.textContent = getMayanSymbol(currentDate);
